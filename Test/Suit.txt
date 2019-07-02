@@ -1,0 +1,28 @@
+*** Settings ***
+Library           Selenium2Library
+
+*** Test Cases ***
+testcase
+    Open Browser    https://www.baidu.com    gc
+    Set Browser Implicit Wait    10s
+    Input Text    id=kw    动脑学院
+    Click Element    id=su
+    Comment    sleep    2s
+    Click Element    xpath=//*[@id="2"]/h3/a
+    ${handles}    Get Window Handles
+    Close Window
+    Select Window    ${handles[1]}
+    Comment    sleep    5s
+    Click Element    xpath=//*[@id="js-tab"]/li[3]/a
+    Click Element    xpath=/html/body/section[2]/div[2]/div[3]/div/div/div/a[4]
+    Click Element    xptah=/html/body/section[2]/div[2]/div[3]/ul/li[2]/div/h4/a
+    sleep    5s
+    [Teardown]    Close All Browsers    # Close All Browsers
+
+Link
+    Open Browser    https://www.baidu.com    gc
+    Set Browser Implicit Wait    10s
+    Comment    Click Link    partiallink=百度
+    Input Text    class=s_ipt    ff
+    sleep    5s
+    [Teardown]    Close All Browsers    # Close All Browsers
