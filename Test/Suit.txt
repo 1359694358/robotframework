@@ -26,3 +26,8 @@ Link
     Input Text    class=s_ipt    ff
     sleep    5s
     [Teardown]    Close All Browsers    # Close All Browsers
+
+condition
+    ${index}    Set Variable    11
+    Run Keyword If    ${index}==10    log    11
+    ...    ELSE IF    ${index}>10    log    haha
