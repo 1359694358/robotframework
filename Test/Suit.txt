@@ -31,3 +31,17 @@ condition
     ${index}    Set Variable    11
     Run Keyword If    ${index}==10    log    11
     ...    ELSE IF    ${index}>10    log    haha
+    ${a}    Convert To Integer    12
+    ${b}    Set Variable    12
+    Run Keyword And Ignore Error    Should Be Equal    ${a}    ${b}
+    Should Be Equal As Strings    ${a}    ${b}
+
+loop
+    Open Browser    https://www.baidu.com    gc
+    Set Browser Implicit Wait    10s
+    : FOR    ${index}    IN    girl    boy    other    #...代表换行
+    \    Input Text    id=kw    ${index}
+    \    Click Element    id=su
+    \    sleep    5s
+    log    ${index}
+    [Teardown]    Close All Browsers    # Close All Browsers
