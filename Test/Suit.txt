@@ -45,3 +45,23 @@ loop
     \    sleep    5s
     log    ${index}
     [Teardown]    Close All Browsers    # Close All Browsers
+
+phpwindregist
+    :FOR    ${uname}    ${psw}    ${repsw}    ${email}    IN
+    ...    test001    test001    test001    test001@qq.com
+    ...    test002    test002    test002    test002@qq.com
+    ...    test003    test003    test003    test003@qq.com
+    ...    test004    test004    test004    test004@qq.com
+    \    Log Many    ${uname}    ${psw}    ${repsw}    ${email}
+    \    Open Browser    http://127.0.0.1/phpwind/register.php#breadCrumb    gc
+    \    Set Browser Implicit Wait    10s
+    \    Sleep    2s
+    \    Click Element    id=regbutton
+    \    Input Text    id=regname    ${uname}
+    \    Input Text    id=regpwd    ${psw}
+    \    Input Text    id=regpwdrepeat    ${repsw}
+    \    Input Text    id=regemail    ${email}
+    \    Select From List By Value    id=province_apartment    110000
+    \    Click Element    xpath=//button[contains(text(),'提交注册')]
+    \    Sleep    3s
+    \    Close All Browsers
