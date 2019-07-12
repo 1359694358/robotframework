@@ -81,7 +81,7 @@ phpwindregist_usecustom_keyword
 *** Keywords ***
 phpwind regist
     [Arguments]    ${uname}    ${psw}    ${repsw}    ${email}
-    [Documentation]    open 127.0.0.1 php wind \ ,and \ regist account
+    [Documentation]    open 127.0.0.1 php wind \ ,and \ regist account \
     Click Element    id=regbutton
     Input Text    id=regname    ${uname}
     Input Text    id=regpwd    ${psw}
