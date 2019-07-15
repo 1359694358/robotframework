@@ -1,0 +1,28 @@
+﻿mouse over 参数：元素位置  
+对于有iframe 标签
+  进入 select frame 
+   退出iframe   unselect frame
+   
+   元素定位
+    
+   1：id   一般情况下是唯一 优先使用
+   
+   2: name   一般情况下是唯一 优先使用
+   
+   3：linktext 用超链接中的text元素进行定位，RF里面用link=
+   
+   4:partiallinktext  用超链接中的text元素进行定位，LINK的增强版（支持模糊查询）
+    RF里面用partiallink=  (弱模糊查询结果有多个，默认选择第一个)
+   
+   5：tagname   一般不用，会作为辅助定位
+   
+   6:classname  也比较弱，特别是很多class中会有多个参数且含有空格
+   
+   7：xpath
+           绝对路径 
+		    相对
+                         绝对+相对路径
+			
+//div[contains(@id,'rt_rt_1')]
+   
+   

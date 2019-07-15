@@ -14,15 +14,29 @@ testcase
     Select Window    ${handles[1]}
     Comment    sleep    5s
     Click Element    xpath=//*[@id="js-tab"]/li[3]/a
-    Click Element    xpath=/html/body/section[2]/div[2]/div[3]/div/div/div/a[4]
-    Click Element    xptah=/html/body/section[2]/div[2]/div[3]/ul/li[2]/div/h4/a
+    ${teacherName}    Set Variable    Eran
+    log    ${teacherName}
+    :FOR    ${pageIndex}    IN RANGE    1    6    1
+    \    ${pageIndexXpath}    Set Variable    //div[@class='page-box']/a[@data-index='${pageIndex}']
+    \    Click Element    ${pageIndexXpath}
+    \    sleep    2s
+    \    log    ${pageIndexXpath}
+    \    ${teacherItem}    Run Keyword And Ignore Error    Get WebElement    xpath=//a[@title="${teacherName}"]
+    \    log    ${teacherItem}
+    \    ${findResult}    Run Keyword And Ignore Error    Should Start With    ${teacherItem}[0]    ('PASS'
+    \    Run Keyword And Ignore Error    Run Keyword And Return If    "${findResult}"=="('PASS', None)"    Click Element    xpath=//a[@title="${teacherName}"]
+    \    Run Keyword And Ignore Error    Run Keyword If    "${findResult}"=="('PASS', None)"    Exit For Loop
     sleep    5s
     [Teardown]    Close All Browsers    # Close All Browsers
 
 Link
     Open Browser    https://www.baidu.com    gc
     Set Browser Implicit Wait    10s
+    ${kw}    Set Variable    百度
     Comment    Click Link    partiallink=百度
+    ${result}    Run Keyword And Ignore Error    Get WebElement    partiallink=${kw}
+    ${result}    Run Keyword And Ignore Error    Should Start With    ${result}[0]    ('PASS'
+    Run KeyWord If    "${result}"=="('PASS', None)"    log    hahaha
     Input Text    class=s_ipt    ff
     sleep    5s
     [Teardown]    Close All Browsers    # Close All Browsers
@@ -66,10 +80,9 @@ phpwindregist
     \    Close All Browsers
 
 phpwindregist_usecustom_keyword
-    : FOR    ${uname}    ${psw}    ${repsw}    ${email}    IN
-    ...    test_001    test_001    test_001    test_001@qq.com
-    ...    test_002    test_002    test_002    test_002@qq.com
-    ...    test_003    test_003    test_003    test_003@qq.com
+    : FOR    ${uname}    ${psw}    ${repsw}    ${email}    IN    test_001
+    ...    test_001    test_001    test_001@qq.com    test_002    test_002    test_002
+    ...    test_002@qq.com    test_003    test_003    test_003    test_003@qq.com
     \    Log Many    ${uname}    ${psw}    ${repsw}    ${email}
     \    Open Browser    http://127.0.0.1/phpwind/register.php#breadCrumb    gc
     \    Set Browser Implicit Wait    10s
