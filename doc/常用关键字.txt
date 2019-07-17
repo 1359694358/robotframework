@@ -1,0 +1,42 @@
+RF+Appium APP功能自动化测试：常用关键字以及元素定位的问题
+      sdk还没配置好
+	  pip install robotframework-appiumlibrary
+	   library依然标红  请在cmd窗口敲 pip install six 这个想象成appiumlibrary与RF的连接线
+	   
+	   不要去升级你的appium desktop 有可能更新以后会用不了
+	   当你导入了多个library之后，若用到关键字名称一样的需要在前面加上你要用那个library的前缀. 
+	   
+	    1： Reset Application 重启我们的APP 并且会清除掉之前的某些数据
+		2: open  Application 
+参数：  
+http://127.0.0.1:4723/wd/hub  url地址  所谓接口测试 传入参数 分析结果
+deviceName": "127.0.0.1:62001",
+  "platformName": "Android",
+  "platformVersion": "4.4.2",
+  "appPackage": "com.xunmeng.pinduoduo",
+  "appActivity": 
+  
+       3：click element  元素的位置 不支持坐标定位
+            tap  支持所有
+			click a point  只支持坐标定位
+			
+	   4：input text
+	   5:swipe 滑动屏幕 参数：x:  y:     x1:  y1:     默认是1000ms
+	   6：shake 摇一摇
+	   7：long press 长按
+	   8：zoom 放大   参数：元素位置  pinch 缩小  参数同左
+	   
+	   元素定位：
+	      id  name   xpath
+		  
+		  APP里面 主要也是这三个
+		   但是RF里面不支持name 定位
+		   APP里的元素 text = name
+		              resource-id = id
+					  class = class
+					  content-desc = accessibility_id
+					  xpath=//*[@text=消息]
+		       
+		   
+	   
+	   
