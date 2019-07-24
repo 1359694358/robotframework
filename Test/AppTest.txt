@@ -1,11 +1,19 @@
 *** Settings ***
 Library           AppiumLibrary
 
+*** Variables ***
+${name}           111
+@{names}          1    2    3
+
 *** Test Cases ***
 first_appium
     Comment    Open Application    http://localhost:4723/wd/hub    platformName=Android    platformVersion=6    deviceName=022NKM148E002650    appPackage=com.sobey.appfactory
     ...    appActivity=com.sobey.appfactory.activity.home.HomeActivity    noReset=true
     StartApp    022NKM148E002650    com.sobey.appfactory    com.sobey.appfactory.activity.home.HomeActivity
+
+varuse
+    log    ${name}
+    log many    ${names}
 
 *** Keywords ***
 StartApp
